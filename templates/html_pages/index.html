@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- CSS only -->
+    {% extends 'base.html' %}
+</head>
+<body>
+{% block con %}
+<div class="dropdown">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-sm-3">
+        <form method="get" action="">
+           <br>
+  
+            <label for="">number 1</label>
+            <input type="number" name="num1"><br>
+    
+    
+            <label>number 2</label>
+            <input type="number" name="num2" id=""><br>
+    
+            <input class="btn btn-primary" type="submit" value="send">
+        </form>
+      </div>
+
+      <div class="col-6 col-sm-3 ">
+        <br>
+        
+          {% if num1 %}
+            
+              <p>number1 : <span class="border border-light">{{ num1 }} </span></p>
+              <p>number2 : <span class="border border-light">{{ num2 }} </span></p>
+              <p>sol : <span class="border border-light">{{ sol }} </span></p>
+            
+          {% else %}
+            <div class="alert alert-danger" role="alert">
+              not data
+            </div>
+          {% endif %}
+        
+      </div>
+        <div class="col-6 col-sm-3">
+
+<!-- frame    -->
+
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="{% url 'pdf-file' %}" width="300%" height="450xp"></iframe>
+          </div>
+      </div>
+      <!-- Force next columns to break to new line -->
+      <div class="w-100"></div>
+  
+      <div class="col-6 col-sm-3"><a href="{% url 'download-pdf' %}" class="btn btn-default">
+        download PDF file
+      </a></div>
+      <br>
+      <div class="col-6 col-sm-3"><a href="{% url 'pdf-file' %}" class="btn btn-default">
+        View in PDF file
+      </a></div>
+    </div>
+  </div>
+
+
+
+<!-- <form method="post" action="">
+
+    {% csrf_token %} <br>
+
+        <label for="">number 1</label>
+        <input type="number" name="num1"><br>
+
+
+        <label>number 2</label>
+        <input type="number" name="num2" id=""><br>
+
+    <input type="submit" value="send">
+</form><br>
+
+<a href="{% url 'download-pdf' %}" class="btn btn-default">
+  download PDF file
+</a>
+<br>
+<a href="{% url 'pdf-file' %}" class="btn btn-default">
+  View in PDF file
+</a>
+{% if num1 %}
+<p>number1 : {{ num1 }}</p>
+<p>number2 : {{ num2 }}</p>
+<p>sol : {{ sol }}</p>
+{% else %}
+none
+{% endif %} -->
+<!-- <form>
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleFormControlInput1">number 1</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" name="num1">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">number 2</label>
+    <input type="number" class="form-control" id="exampleFormControlInput2" name="num2">
+  </div>
+</form> -->
+{% endblock %}
+
+</body>
+</html>

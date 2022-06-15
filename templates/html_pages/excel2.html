@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% extends 'base.html' %}
+</head>
+<body>
+{% block con %}
+<h1>excel 2</h1>
+
+<div class="container">
+    <div class="row">
+      <div class="col-6 col-sm-3">
+        <form method="get" action="">
+           <br>
+
+            <label for="">number 1</label>
+            <input type="number" name="num1"><br>
+
+
+            <label>number 2</label>
+            <input type="number" name="num2" id=""><br>
+
+            <input class="btn btn-primary" type="submit" value="send">
+        </form>
+      </div>
+
+      <div class="col-6 col-sm-3 ">
+        <br>
+
+          {% if num1 %}
+
+              <p>number1 : <span class="border border-light">{{ num1 }} </span></p>
+              <p>number2 : <span class="border border-light">{{ num2 }} </span></p>
+              <p>sol : <span class="border border-light">{{ sol }} </span></p>
+
+          {% else %}
+            <div class="alert alert-danger" role="alert">
+              not data
+            </div>
+          {% endif %}
+
+      </div>
+        <div class="col-6 col-sm-3">
+
+<!-- frame    -->
+
+          <div class="embed-responsive embed-responsive-16by9">
+
+<!--              <iframe-->
+<!--                    src="excel.html"-->
+<!--                    frameBorder="0"-->
+<!--                    scrolling="auto"-->
+<!--                    height="100%"-->
+<!--                    width="100%">-->
+<!--              </iframe>-->
+              <embed src="{% url 'pdf-file'%}" type="application/pdf" width="300%" height="600px"/>
+          </div>
+      </div>
+      <!-- Force next columns to break to new line -->
+      <div class="w-100"></div>
+
+      <div class="col-6 col-sm-3"><a href="{% url 'download-pdf' %}" class="btn btn-default">
+        download PDF file
+      </a></div>
+      <br>
+      <div class="col-6 col-sm-3"><a href="{% url 'pdf-file' %}" class="btn btn-default">
+        View in PDF file
+      </a></div>
+    </div>
+  </div>
+
+{% endblock %}
